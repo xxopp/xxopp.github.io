@@ -156,8 +156,7 @@
     var str = ''
     var index = 0
     var timer = null
-    // fetch("./emby-icon.json")
-    fetch("./emby.json")
+    fetch("./emby.json?version=1")
       .then((response) => response.json())
       .then((data) => {
         dataList = data.icons
