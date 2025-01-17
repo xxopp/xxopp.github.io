@@ -192,11 +192,12 @@
     }
     function copy(e) {
       navigator.clipboard.writeText(dataList[e].url);
-      const list = document.querySelectorAll('.item')
-      list[e].childNodes[0].src = './success.svg'
-      setTimeout(() => {
-        list[e].childNodes[0].src = dataList[e].url
-      }, 1000)
+      alert('复制成功')
+      // const list = document.querySelectorAll('.item')
+      // list[e].childNodes[0].src = './success.svg'
+      // setTimeout(() => {
+      //   list[e].childNodes[0].src = dataList[e].url
+      // }, 1000)
     }
     function copyUrl() {
       navigator.clipboard.writeText('https://xxopp.github.io/emby/emby.json');
