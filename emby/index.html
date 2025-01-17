@@ -182,7 +182,8 @@
       } else {
         data = dataList.slice(index, index + 50)
       }
-      data.forEach((element, index) => {
+      data.forEach(element => {
+        const index = dataList.findIndex(x => x.url === element.url)
         // str += '<div class="item" onclick="copy(' + index + ')"><img loading="lazy" src="' + element.url + '" alt="' + element.name + '"></div>'
         main.insertAdjacentHTML('beforeend', '<div class="item" onclick="copy(' + index + ')"><img loading="lazy" src="' + element.url + '" alt="' + element.name + '"></div>');
       })
