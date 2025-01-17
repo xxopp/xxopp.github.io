@@ -162,9 +162,11 @@
       .then((data) => {
         dataList = data.icons
         num = Math.ceil(dataList.length / 50)
+        next()
+        index++
         timer = setInterval(() => {
-          next(0)
-        }, 2000)
+          next()
+        }, 1000)
       })
     function next() {
       const main = document.querySelector('.content')
