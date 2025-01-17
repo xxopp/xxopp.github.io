@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Emby Icon</title>
   <link type="image/x-icon" href="favicon.ico" rel="SHORTCUT ICON" />
-  <meta name="keywords" content="emby,icon" />
-  <meta name="description" content="Emby Icon" />
+  <meta name="keywords" content="hello,夜雨聆风,ak47导航,laoyee,yeyulingfeng" />
+  <meta name="description" content="欢迎关注夜雨聆风" />
   <link rel="stylesheet" href="https://registry.npmmirror.com/lxgw-wenkai-screen-web/latest/files/style.css"
     media="print" onload="this.media='all'">
   <style>
@@ -139,13 +139,15 @@
       }
     }
   </style>
+  <script src="./js/tongji.js"></script>
 </head>
 
 <body>
   <div class="notice" align="center">
-    <a href="/t/"><img class="panfish" src="./avatar.png" /></a>
+    <a href="https://www.meijiecao.top/haha/"><img class="panfish" src="../img/newimg/avatar.png" /></a>
 
     <h2>Emby图标库, 点击图片即可复制!!!</h2>
+    <p onclick="copyUrl()" style="text-align: center;">https://xxopp.github.io/emby/emby.json</p>
     <div class="content"></div>
     <p style="margin-top: 10px;">数据来源：<a style="color:#D25C30"
         href="https://github.com/baiitang/Sakura/tree/main/Fileball/Yuan" target="_blank">Github</a>
@@ -153,17 +155,41 @@
   </div>
   <script>
     var dataList = []
+    var num = 0
+    var str = ''
+    var index = 0
+    var timer = null
+    // fetch("./emby-icon.json")
     fetch("./emby.json")
       .then((response) => response.json())
       .then((data) => {
         dataList = data.icons
-        let str = ''
-        const main = document.querySelector('.content')
-        data.icons.forEach((element, index) => {
-          str += '<div class="item" onclick="copy(' + index + ')"><img loading="lazy" src="' + element.url + '" alt="' + element.name + '"></div>'
-        })
-        main.innerHTML = str
+        num = Math.ceil(dataList.length / 50)
+        timer = setInterval(() => {
+          next(0)
+        }, 2000)
       })
+    function next() {
+      const main = document.querySelector('.content')
+      let data = []
+      if (index > num) {
+        clearInterval(timer)
+        return
+      }
+      if (index === 0) {
+        data = dataList.slice(0, index + 50)
+      } else if (index === num) {
+        data = dataList.slice(index + 50)
+      } else {
+        data = dataList.slice(index, index + 50)
+      }
+      data.forEach((element, index) => {
+        // str += '<div class="item" onclick="copy(' + index + ')"><img loading="lazy" src="' + element.url + '" alt="' + element.name + '"></div>'
+        main.insertAdjacentHTML('beforeend', '<div class="item" onclick="copy(' + index + ')"><img loading="lazy" src="' + element.url + '" alt="' + element.name + '"></div>');
+      })
+      // main.innerHTML = str
+      index++
+    }
     function copy(e) {
       navigator.clipboard.writeText(dataList[e].url);
       const list = document.querySelectorAll('.item')
@@ -171,6 +197,9 @@
       setTimeout(() => {
         list[e].childNodes[0].src = dataList[e].url
       }, 1000)
+    }
+    function copyUrl() {
+      navigator.clipboard.writeText('https://xxopp.github.io/emby/emby.json');
     }
   </script>
 </body>
