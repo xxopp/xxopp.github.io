@@ -1,6 +1,6 @@
 {
-  "name": "Fileball@baitang",
-  "description": "在原作者Softlyx的基础上新增，图标按照服名或群名命名，按照A-Z排列，方便查找。Fileball可以在图标搜索框搜索图标名。",
+  "name": "Emby图标库(圆)@baiitang",
+  "description": "在原作者Softlyx的基础上新增，图标按照服名或群名命名，按照A-Z排列，方便查找。可以在图标搜索框搜索图标名，缺少的图标可投稿。",
   "icons": [
     {
       "name": "Emby",
@@ -198,6 +198,10 @@
       "name": "BTYIN1",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/BTYIN1.png"
     },
+    {
+      "name": "BBFree",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/BBFree.png"
+    },
 
     {
       "name": "Captain-z",
@@ -280,6 +284,10 @@
       "name": "Coco",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Coco.png"
     },
+    {
+      "name": "Cimmera",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Cimmera.png"
+    },
 
     {
       "name": "Dafashijian",
@@ -329,6 +337,10 @@
     {
       "name": "DVYY1",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/DVYY1.png"
+    },
+    {
+      "name": "DoveNest",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/DoveNest.png"
     },
 
     {
@@ -503,6 +515,11 @@
     },
 
     {
+      "name": "libhsulife",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/libhsulife.png"
+    },
+
+    {
       "name": "Jhemby",
       "url": "https://cdn.jsdmirror.com/gh/Softlyx/Fileball@main/YUAN/Jhemby.png"
     },
@@ -539,6 +556,14 @@
       "name": "July",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/July.png"
     },
+    {
+      "name": "Jingzhe",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Jingzhe.png"
+    },
+    {
+      "name": "Jingzhe1",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Jingzhe1.png"
+    },
 
     {
       "name": "KaiLu",
@@ -574,6 +599,11 @@
     },
 
     {
+      "name": "Kiku",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Kiku.png"
+    },
+
+    {
       "name": "Lend",
       "url": "https://cdn.jsdmirror.com/gh/Softlyx/Fileball@main/YUAN/Lend.png"
     },
@@ -600,6 +630,10 @@
     {
       "name": "Lyrebird",
       "url": "https://cdn.jsdmirror.com/gh/Softlyx/Fileball@main/YUAN/Lyrebird.png"
+    },
+    {
+      "name": "Lyrebird1",
+      "url": "https://cdn.jsdmirror.com/gh/Softlyx/Fileball@main/YUAN/Lyrebird1.png"
     },
 
     {
@@ -724,6 +758,14 @@
       "name": "Mtdb",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Mtdb.png"
     },
+    {
+      "name": "Moyunge",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Moyunge.png"
+    },
+    {
+      "name": "Moyunge1",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Moyunge1.png"
+    },
 
     {
       "name": "NakoNako",
@@ -777,6 +819,10 @@
     {
       "name": "Ntrrr2",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Ntrrr.png"
+    },
+    {
+      "name": "Ntrrr3",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Ntrrr3.png"
     },
     {
       "name": "Nijigen2",
@@ -1025,6 +1071,10 @@
       "name": "SaturDayLite",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/SaturDayLite.png"
     },
+    {
+      "name": "SaturDayPro",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/SaturDayPro.png"
+    },
 
     {
       "name": "Tag",
@@ -1131,6 +1181,10 @@
       "name": "Wdfhl",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Wdfhl.png"
     },
+    {
+      "name": "Wahaha",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Wahaha.png"
+    },
 
     {
       "name": "XfEmby",
@@ -1189,6 +1243,10 @@
     {
       "name": "Yuanwei",
       "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Yuanwei.png"
+    },
+    {
+      "name": "Yingyue",
+      "url": "https://cdn.jsdmirror.com/gh/baiitang/sakura/Fileball/Yuan/icon/Yingyue.png"
     },
 
     {
