@@ -1,0 +1,354 @@
+/* ============================================================
+   note-1 / style.css
+   个人笔记页样式表 —— 克制规范化版本
+   设计锚：Mintlify 文档系统（near-black 文字、5%/8% hairline、
+   16px 起字阶、400/500/600 三档字重、4px inline 圆角、8px 间距基准）
+   ============================================================ */
+
+/* --- 1. 设计 token ------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --canvas:      #ffffff;
+  --surface:     #faf9f7;
+  --ink:         #1c1c1a;              /* near-black，不用纯黑 */
+  --ink-2:       rgba(0, 0, 0, .68);
+  --ink-3:       rgba(0, 0, 0, .46);
+  --line:        rgba(0, 0, 0, .09);
+  --line-soft:   rgba(0, 0, 0, .05);
+
+  --accent:      #2f6f5e;              /* 墨绿：链接 / focus / 主重音 */
+  --accent-soft: #eaf2ee;
+  --warm:        #a15c2a;              /* 暖棕橙：说明 / 参考 / 公告 */
+  --warm-soft:   #fbf6ec;
+  --warm-line:   rgba(161, 92, 42, .28);
+  --rose:        #a8574e;              /* Emby */
+  --promo:       #b4513c;              /* 推广 */
+  --danger:      #b23c3c;              /* 警示 */
+  --muted:       #6b6b66;              /* 副标题 */
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
+  --radius-s:     4px;
+  --radius-m:     8px;
+  --radius-pill:  9999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 48px 28px 96px;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;                   /* 中文正文 ≥ 1.5 */
+  letter-spacing: 0;                  /* 中文禁负字距 */
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 定制文本选中色 */
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+/* 细窄滚动条 */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(47, 111, 94, .28);
+  border: 3px solid var(--canvas);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(47, 111, 94, .45); }
+
+/* 品牌 focus 环 */
+:where(a, button, [role="button"]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+/* --- 2. 排版 ------------------------------------------------- */
+h2, h3 {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+h2 {
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--line);     /* hairline 章节线 */
+  font-size: clamp(1.375rem, 1.15rem + 1vw, 1.625rem);
+  line-height: 1.35;
+}
+h3 {
+  margin: 2rem 0 .75rem;
+  font-size: 1.125rem;
+  line-height: 1.45;
+}
+h3.muted { color: var(--muted); font-weight: 500; }
+
+p { margin: 0 0 .75rem; }
+
+ol { margin: 0 0 1rem; padding-left: 1.5rem; }
+li { margin-bottom: .4rem; }
+li::marker { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+hr {
+  height: 0;
+  margin: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+strong { font-weight: 600; }
+del { color: var(--ink-3); }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  word-break: normal;
+  overflow-wrap: anywhere;            /* 长 URL 可断行，但不硬断英文单词 */
+  transition: color 140ms var(--ease-out),
+              text-decoration-thickness 140ms var(--ease-out);
+}
+a.ref   { color: var(--warm); }
+a.promo { color: var(--promo); }
+
+/* 首屏两条地址收成一组，与下方免责声明拉开层级 */
+p.site-addr { color: var(--accent); margin-bottom: .35rem; }
+p.site-addr + p:not(.site-addr) { margin-top: 1.25rem; }
+
+span.emby         { color: var(--rose); }
+span.good         { color: var(--accent); font-weight: 600; }
+span.danger       { color: var(--danger); }
+
+img.shot {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: .75rem 0;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+}
+
+/* --- 3. 语义色 hover（仅真指针设备） ------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  a:hover       { color: var(--promo); text-decoration-thickness: 2px; }
+  a.promo:hover { color: var(--warm); }
+}
+
+/* ============================================================
+   4. .copy 可复制文案组件 —— 独立样式区块
+   基础芯片 + 链接旁图标按钮变体 + 状态 + toast
+   本区块自成体系，可单独抽成 copy.css，不与其它组件混写
+   ============================================================ */
+.copy {
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
+  padding: .1em .45em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--warm);
+  font-family: var(--font-mono);
+  font-size: .9375em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  cursor: copy;
+  -webkit-user-select: all;
+  user-select: all;
+  touch-action: manipulation;
+  transition: background-color 140ms var(--ease-out),
+              border-color     140ms var(--ease-out),
+              color            140ms var(--ease-out),
+              transform        140ms var(--ease-out);
+}
+
+/* 复制成功 / 失败状态 */
+.copy.is-copied {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.copy.is-failed {
+  background: #fbefef;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.copy:active { transform: scale(.97); }
+
+@media (hover: hover) and (pointer: fine) {
+  .copy:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+/* 链接旁的图标按钮变体：不占版面、不改变链接跳转行为 */
+button.copy-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: .3em;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink-3);
+  opacity: .55;
+  vertical-align: -4px;
+  flex: none;
+  font: inherit;
+  transition: opacity       140ms var(--ease-out),
+              color         140ms var(--ease-out),
+              background-color 140ms var(--ease-out),
+              transform     140ms var(--ease-out);
+}
+/* 纯 CSS 「两张纸」复制图标，不用 emoji / 外链图标 */
+button.copy-icon::before,
+button.copy-icon::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+button.copy-icon::after  { left: 7px; top: 7px; }
+button.copy-icon::before {
+  left: 3px; top: 3px; z-index: 1;
+  background: var(--canvas);
+  transition: background-color 140ms var(--ease-out);
+}
+button.copy-icon:focus-visible::before,
+button.copy-icon.is-copied::before { background: var(--accent-soft); }
+
+@media (hover: hover) and (pointer: fine) {
+  button.copy-icon:hover {
+    opacity: 1;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  button.copy-icon:hover::before { background: var(--accent-soft); }
+}
+button.copy-icon:focus-visible,
+button.copy-icon.is-copied {
+  opacity: 1;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 复制反馈 toast：从底部进出，只动 transform / opacity */
+.copy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 50;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  box-shadow: 0 2px 6px rgba(28, 28, 26, .06),
+              0 8px 24px rgba(28, 28, 26, .10);
+  transition: opacity   120ms var(--ease-out),
+              transform 120ms var(--ease-out);
+}
+.copy-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition-duration: 180ms;          /* 进入慢于退出 */
+}
+
+/* ============================================================
+   5. .notice 公告组件 —— 独立样式区块
+   整块底色 + 全边框（禁用左侧竖线），自成体系可单独抽出
+   ============================================================ */
+.notice {
+  margin: 0 0 2rem;
+  padding: 20px 24px;
+  border: 1px solid var(--warm-line);
+  border-radius: var(--radius-m);
+  background: var(--warm-soft);
+  color: var(--ink-2);
+}
+.notice ::selection {
+  background: rgba(161, 92, 42, .18);
+  color: var(--ink);
+}
+
+.notice > p {
+  margin: 0 0 .5rem;
+  font-size: .9375rem;
+  line-height: 1.75;
+  text-wrap: balance;                 /* 防中文短段落末尾孤字成行 */
+}
+.notice > p:last-child { margin-bottom: 0; }
+
+/* 编辑式小标签：圆点 + 暖色 label，不用 emoji / 图标字体 */
+.notice > p.notice-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  margin: 0 0 .75rem;
+  color: var(--warm);
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  line-height: 1.4;
+}
+.notice > p.notice-label::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* 记忆点：核心结论用字重与近黑色，不靠颜色抢注意力 */
+.notice-point { color: var(--ink); font-weight: 600; }
+
+/* --- 6. 响应式 ----------------------------------------------- */
+@media (max-width: 640px) {
+  body { padding: 28px 18px 64px; font-size: 15px; }
+  h2 { font-size: 1.375rem; }
+  button.copy-icon { opacity: .8; }     /* 触屏无 hover，提高可见度 */
+  .copy-toast { bottom: 16px; }
+  .notice { padding: 16px 18px; margin-bottom: 1.5rem; }
+  .notice > p { font-size: .9375rem; line-height: 1.7; }
+}
+
+/* --- 7. 无障碍：减弱动效 ------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .copy, button.copy-icon, a {
+    transition: background-color 1ms, border-color 1ms, color 1ms;
+  }
+  .copy:active, button.copy-icon:active { transform: none; }
+  .copy-toast {
+    transform: translate(-50%, 0);
+    transition: opacity 1ms;
+  }
+}
